@@ -16,7 +16,7 @@ public class Application2 {
 		Connection con = getConnection();
 		
 		try {
-			System.out.println("autoCommitÀÇ ÇöÀç ¼³Á¤ °ª : " + con.getAutoCommit());
+			System.out.println("autoCommitì˜ í˜„ì¬ ì„¤ì • ê°’ : " + con.getAutoCommit());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -36,7 +36,7 @@ public class Application2 {
 			String query2 = prop.getProperty("insertMenu");
 			
 			pstmt1 = con.prepareStatement(query1);
-			pstmt1.setString(1, "±âÅ¸");
+			pstmt1.setString(1, "ê¸°íƒ€");
 			pstmt1.setInt(2, 1);
 			
 			result1 = pstmt1.executeUpdate();
@@ -44,10 +44,10 @@ public class Application2 {
 			System.out.println("result1 : " + result1);
 			
 			pstmt2 = con.prepareStatement(query2);
-			pstmt2.setString(1, "Á¤¾î¸®ºñºö¹ä");
+			pstmt2.setString(1, "ì •ì–´ë¦¬ë¹„ë¹”ë°¥");
 			pstmt2.setInt(2, 50000);
-			/* TBL_CATEGORY ¿¡ Á¸ÀçÇÏÁö ¾Ê´Â CATEGORY_CODE¸¦ TBL_MENU Å×ÀÌºíÀÇ CATEGORY_CODE °ªÀ¸·Î »ğÀÔÇÏ·Á°í ÇÏ¸é
-			 * ºÎ¸ğ Å°¸¦ Ã£Áö ¸øÇÏ´Â ¿Ü·¡Å° Á¦¾àÁ¶°Ç À§¹İ ¿À·ù°¡ ¹ß»ıÇÑ´Ù.
+			/* TBL_CATEGORY ì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” CATEGORY_CODEë¥¼ TBL_MENU í…Œì´ë¸”ì˜ CATEGORY_CODE ê°’ìœ¼ë¡œ ì‚½ì…í•˜ë ¤ê³  í•˜ë©´
+			 * ë¶€ëª¨ í‚¤ë¥¼ ì°¾ì§€ ëª»í•˜ëŠ” ì™¸ë˜í‚¤ ì œì•½ì¡°ê±´ ìœ„ë°˜ ì˜¤ë¥˜ê°€ ë°œìƒí•œë‹¤.
 			 * */
 			pstmt2.setInt(3, 0);
 			pstmt2.setString(4, "Y");
@@ -64,21 +64,20 @@ public class Application2 {
 			close(pstmt1);
 			close(pstmt2);
 			
-			/* Æ®·£Àè¼Ç(³í¸®ÀûÀÎ ±â´É ¼öÇà ´ÜÀ§) °ü¸®¸¦ À§ÇØ 2°³ÀÇ insert°¡ ¸ğµÎ Àß µ¿ÀÛÇß´ÂÁö ÆÇ´ÜÇÏ¿©
-			 * Àß µ¿ÀÛÇßÀ» °æ¿ì commit, µÑ Áß ÇÏ³ª¶óµµ Àß µ¿ÀÛÇÏÁö ¾Ê¾ÒÀ» °æ¿ì rollbackÀ» ¼öÇàÇÑ´Ù.
+			/* íŠ¸ëœì­ì…˜(ë…¼ë¦¬ì ì¸ ê¸°ëŠ¥ ìˆ˜í–‰ ë‹¨ìœ„) ê´€ë¦¬ë¥¼ ìœ„í•´ 2ê°œì˜ insertê°€ ëª¨ë‘ ì˜ ë™ì‘í–ˆëŠ”ì§€ íŒë‹¨í•˜ì—¬
+			 * ì˜ ë™ì‘í–ˆì„ ê²½ìš° commit, ë‘˜ ì¤‘ í•˜ë‚˜ë¼ë„ ì˜ ë™ì‘í•˜ì§€ ì•Šì•˜ì„ ê²½ìš° rollbackì„ ìˆ˜í–‰í•œë‹¤.
 			 * */
 			if(result1 > 0 && result2 > 0) {
-				System.out.println("½Å±Ô Ä«Å×°í¸®¿Í ¸Ş´º µî·Ï ¼º°ø!");
+				System.out.println("ì‹ ê·œ ì¹´í…Œê³ ë¦¬ì™€ ë©”ë‰´ ë“±ë¡ ì„±ê³µ!");
 				commit(con);
 			} else {
-				System.out.println("½Å±Ô Ä«Å×°í¸®¿Í ¸Ş´º µî·Ï ½ÇÆĞ!");
+				System.out.println("ì‹ ê·œ ì¹´í…Œê³ ë¦¬ì™€ ë©”ë‰´ ë“±ë¡ ì‹¤íŒ¨!");
 				rollback(con);
 			}
 			
 			close(con);
 		}
 	
-		
 	}
 
 }
