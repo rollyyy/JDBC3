@@ -17,7 +17,7 @@ public class Application1 {
 		
 		
 		try {
-			System.out.println("autoCommitÀÇ ÇöÀç ¼³Á¤ °ª : " + con.getAutoCommit());
+			System.out.println("autoCommitì˜ í˜„ì¬ ì„¤ì • ê°’ : " + con.getAutoCommit());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -33,7 +33,7 @@ public class Application1 {
 			String query = prop.getProperty("insertMenu");
 			
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "Á¤¾î¸®ºñºö¹ä");
+			pstmt.setString(1, "ì •ì–´ë¦¬ë¹„ë¹”ë°¥");
 			pstmt.setInt(2, 50000);
 			pstmt.setInt(3, 4);
 			pstmt.setString(4, "Y");
@@ -50,11 +50,12 @@ public class Application1 {
 		}
 		
 		if(result > 0) {
-			System.out.println("¸Ş´º µî·Ï ¼º°ø!");
+			System.out.println("ë©”ë‰´ ë“±ë¡ ì„±ê³µ!");
 		} else {
-			System.out.println("¸Ş´º µî·Ï ½ÇÆĞ!");
+			System.out.println("ë©”ë‰´ ë“±ë¡ ì‹¤íŒ¨!");
 		}
 		
 	}
 
+	
 }	
